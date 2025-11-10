@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Viesu nams "Upesrūķi"</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #a67c52; /* warm wood brown */
+      --dark: #4e342e; /* deep brown */
+      --light: #f5eee6; /* soft beige */
+      --bg: #FAF0E6; /* udensdzirnavas beige */
+      --shadow: 0 4px 24px rgba(166,124,82,0.10);
+      --overlay-gradient: linear-gradient(180deg, rgba(78,52,46,0.55) 60%, rgba(78,52,46,0.85) 100%);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(245,238,230,0.97);
+      box-shadow: var(--shadow);
+      z-index: 100;
+      width: 100%;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-weight: 900;
+      z-index: 102;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      transition: max-height 0.3s;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s, background 0.2s;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .nav-links a:hover, .nav-links a:focus {
+      color: var(--gold);
+      background: #f5eee6;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 38px;
+      height: 38px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 103;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      margin: 4px 0;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .hero {
+      position: relative;
+      min-height: 68vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      text-align: left;
+      border-bottom-left-radius: 60px 40px;
+      border-bottom-right-radius: 60px 40px;
+      box-shadow: 0 8px 32px rgba(166,124,82,0.13);
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('headeris.jpg') center/cover no-repeat;
+      filter: brightness(0.85) contrast(1.1) saturate(1.2);
+      z-index: 0;
+      border-bottom-left-radius: 60px 40px;
+      border-bottom-right-radius: 60px 40px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(78,52,46,0.55) 0%, rgba(166,124,82,0.13) 30%, rgba(245,238,230,0.10) 100%);
+      z-index: 0;
+      border-bottom-left-radius: 60px 40px;
+      border-bottom-right-radius: 60px 40px;
+    }
+    .hero-overlay {
+      background: linear-gradient(120deg, rgba(166,124,82,0.22) 0%, rgba(78,52,46,0.32) 100%);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      border-bottom-left-radius: 60px 40px;
+      border-bottom-right-radius: 60px 40px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 700px;
+      margin: 0 0 4vw 6vw;
+      padding-bottom: 3vw;
+      text-shadow: 0 2px 16px rgba(78,52,46,0.22);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 16px rgba(78,52,46,0.22), 0 0 24px rgba(166,124,82,0.18);
+      letter-spacing: 1.5px;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      text-shadow: 0 2px 8px rgba(78,52,46,0.18), 0 0 12px rgba(166,124,82,0.18);
+    }
+    .gold-btn {
+      background: linear-gradient(90deg, #e2c9a0 0%, #c7a07b 100%);
+      color: #4e342e;
+      border: none;
+      padding: 1.1rem 2.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 32px;
+      box-shadow: none;
+      cursor: pointer;
+      text-shadow: 0 1px 4px rgba(245,238,230,0.10);
+      outline: none;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.18s cubic-bezier(.42,1.52,.58,1), transform 0.18s cubic-bezier(.42,1.52,.58,1);
+      transform: none;
+      text-decoration: none;
+    }
+    .gold-btn:hover, .gold-btn:focus {
+      text-decoration: none;
+    }
+    @media (hover: hover) {
+      .gold-btn:hover, .gold-btn:focus {
+        transform: scale(1.12);
+        box-shadow: none;
+      }
+    }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.5rem 0.5rem 0 0.5rem;
+      background: var(--bg);
+    }
+    section {
+      margin-bottom: 3.2rem;
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(166,124,82,0.06);
+      padding: 0 0.5rem 1.5rem 0.5rem;
+    }
+    #testimonials {
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 0;
+    }
+    #rooms {
+      margin-top: 0;
+      padding: 0 0.3rem 1.5rem 0.3rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 900;
+    }
+    .section-title-large {
+      font-size: 2.6rem;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      text-align: center;
+      margin-top: 1.2rem;
+      margin-bottom: 1.7rem;
+      letter-spacing: 1px;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    #about {
+      padding-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      #about {
+        padding-top: 4rem;
+      }
+    }
+    .about-text {
+      flex: 1 1 320px;
+      font-size: 1.1rem;
+      max-width: 500px;
+    }
+    .about-img {
+      width: 45%;
+      height: 300px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(166,124,82,0.12);
+    }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .room-card {
+      background: var(--bg);
+      border-radius: 16px;
+      overflow: visible;
+      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.08);
+      border: 1.5px solid #e2d7b7;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 1;
+      transform: translateY(0);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .room-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.18);
+      border-color: #d4af37;
+    }
+    .room-image {
+      height: 280px;
+      overflow: hidden;
+      margin: -1.5px -1.5px 0 -1.5px;
+      width: calc(100% + 3px);
+      border-radius: 16px 16px 0 0;
+      position: relative;
+    }
+    .room-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .room-card:hover .room-image img {
+      transform: scale(1.05);
+    }
+    .room-content {
+      padding: 24px;
+      text-align: center;
+      overflow: hidden;
+      border-radius: 0 0 16px 16px;
+    }
+    .room-content h3 {
+      color: #222;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+    .room-content p {
+      color: #222;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    .room-price {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .room-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid #222;
+    }
+    .room-btn:hover {
+      background: #FAF0E6;
+      color: #222;
+      border-color: #FAF0E6;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    }
+    .room-img {
+      width: 100%;
+      max-width: 450px;
+      height: 310px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: height 0.2s;
+    }
+    .room-img[src*="taka.jpg"] {
+      object-position: center 20%;
+    }
+    .room-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .room-price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #7b5e3c;
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      justify-items: center;
+    }
+    .amenity {
+      background: #f3e7d7;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #7b5e3c;
+      min-width: 120px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .amenity:hover {
+      box-shadow: 0 6px 24px rgba(191,161,74,0.14);
+      transform: scale(1.04);
+    }
+    .amenity-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .testimonials {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .testimonial-slider {
+      overflow: hidden;
+      position: relative;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      background: #f3e7d7;
+    }
+    .testimonial {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      min-height: 220px;
+      text-align: center;
+      transition: opacity 0.5s;
+    }
+    .testimonial.active {
+      display: flex;
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .testimonial-text {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      color: #7b5e3c;
+    }
+    .testimonial-author {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e6d8a7;
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+    }
+    .testimonial-dot.active {
+      background: var(--gold);
+      border: 2px solid #e6d8a7;
+    }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto 2rem auto;
+      background: #f3e7d7;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .contact-form .gold-btn {
+      display: block;
+      margin: 0 auto;
+      width: fit-content;
+      min-width: 200px;
+    }
+    .contact-form label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      font-family: 'Open Sans', Arial, sans-serif;
+      resize: none;
+    }
+    .contact-form textarea {
+      min-height: 80px;
+    }
+    .contact-form button {
+      align-self: flex-end;
+    }
+    .map {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+    }
+    .map-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .map-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .waze-btn {
+      background: linear-gradient(135deg, #33ccff 0%, #0099cc 100%);
+      color: white;
+    }
+    .google-btn {
+      background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+      color: white;
+    }
+    .map-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .map-btn span {
+      font-size: 1.2rem;
+    }
+    .map-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .waze-btn img {
+      border-radius: 4px;
+    }
+    .testimonials {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .testimonial-slider {
+      overflow: hidden;
+      position: relative;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      background: #f3e7d7;
+    }
+    .testimonial {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      min-height: 220px;
+      text-align: center;
+      transition: opacity 0.5s;
+    }
+    .testimonial.active {
+      display: flex;
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .testimonial-text {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      color: #7b5e3c;
+    }
+    .testimonial-author {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e6d8a7;
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+    }
+    .testimonial-dot.active {
+      background: var(--gold);
+      border: 2px solid #e6d8a7;
+    }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto 2rem auto;
+      background: #f3e7d7;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .contact-form .gold-btn {
+      display: block;
+      margin: 0 auto;
+      width: fit-content;
+      min-width: 200px;
+    }
+    .contact-form label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      font-family: 'Open Sans', Arial, sans-serif;
+      resize: none;
+    }
+    .contact-form textarea {
+      min-height: 80px;
+    }
+    .contact-form button {
+      align-self: flex-end;
+    }
+    .map {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+    }
+    .map-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .map-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .waze-btn {
+      background: linear-gradient(135deg, #33ccff 0%, #0099cc 100%);
+      color: white;
+    }
+    .google-btn {
+      background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+      color: white;
+    }
+    .map-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .map-btn span {
+      font-size: 1.2rem;
+    }
+    .map-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    footer {
+      background: #7b5e3c;
+      color: #f5eee6;
+      text-align: center;
+      padding: 1.2rem 0;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-top: 2rem;
+    }
+    .room-desc {
+      margin-top: 0.7rem;
+      font-size: 0.98rem;
+      color: #7b5e3c;
+      text-align: center;
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.5;
+      min-height: 2.2em;
+    }
+    .section-title-star {
+      color: var(--gold);
+      font-size: 1.3em;
+      margin: 0 0.5rem;
+      vertical-align: middle;
+      font-family: 'Playfair Display', serif;
+      user-select: none;
+      display: inline-block;
+      transform: translateY(-2px);
+    }
+    .room-disclaimer {
+      font-size: 0.75em;
+      color: #a67c52;
+      margin-top: 0.8em;
+      margin-bottom: 0.3em;
+      font-style: italic;
+    }
+    .room-disclaimer-icon {
+      font-size: 1.1em;
+      flex-shrink: 0;
+    }
+    @media (max-width: 900px) {
+      nav { flex-direction: column; gap: 0.5rem; align-items: flex-start; padding: 0.7rem 1rem; }
+      .about-content { flex-direction: column; }
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        background: rgba(255,255,255,0.98);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        max-height: 0;
+        overflow: hidden;
+        width: 100%;
+        box-shadow: 0 4px 16px rgba(191,161,74,0.08);
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        z-index: 101;
+        transition: max-height 0.3s;
+      }
+      .nav-links.open {
+        max-height: 300px;
+        padding-bottom: 1rem;
+      }
+      .nav-toggle {
+        display: flex;
+        position: absolute;
+        right: 1.2rem;
+        top: 1.2rem;
+      }
+      /* No nav-phone or nav-cta in reverted version */
+    }
+    @media (min-width: 901px) {
+      .rooms-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (max-width: 900px) {
+      .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        max-width: 600px;
+        padding: 0 20px;
+      }
+      .room-image {
+        height: 200px;
+        margin: -1.5px -1.5px 0 -1.5px;
+        width: calc(100% + 3px);
+        border-radius: 16px 16px 0 0;
+      }
+      .room-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .room-content h3 {
+        font-size: 1.2rem;
+      }
+      .room-content p {
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+      }
+      .room-image {
+        height: 220px;
+        margin: -1.5px -1.5px 0 -1.5px;
+        width: calc(100% + 3px);
+        border-radius: 16px 16px 0 0;
+      }
+      .room-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .room-content h3 {
+        font-size: 1.3rem;
+      }
+      .room-content p {
+        font-size: 0.95rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 60vh;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+      }
+      
+      .hero-content {
+        margin: 2rem 1.5rem;
+        padding-bottom: 2.5rem;
+      }
+      
+      .hero-title {
+        font-size: 1.3rem;
+        margin-top: 0.7rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.98rem;
+        background: rgba(245,238,230,0.92);
+        padding: 0.7em 1em;
+        border-radius: 10px;
+        color: #4e342e;
+        display: block;
+        margin-bottom: 1.2rem;
+        margin-left: -0.7em;
+        width: calc(100vw - 2em);
+      }
+      
+      .gold-btn {
+        padding: 0.7rem 1.3rem;
+        margin-top: 1.2rem;
+        margin-left: -0.7em;
+        font-size: 0.98rem;
+      }
+      
+      .about-text {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+      
+      .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .section-title { font-size: 1rem; }
+      .section-title-large {
+        font-size: 2rem;
+        margin-top: 0.8rem;
+      }
+      .about-img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        margin-top: 1rem;
+      }
+      .room-img { height: 130px; max-width: 98vw; }
+      .room-img[src*="taka.jpg"] {
+        object-position: center 0%;
+      }
+      .map { height: 90px; }
+      main { padding: 0.5rem 0.1rem 0 0.1rem; }
+      .room-card, .amenity { padding: 1rem 0.5rem; }
+      .contact-form { padding: 1rem 0.5rem; }
+      .contact-form .gold-btn {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+        min-width: 200px;
+      }
+      .testimonial { padding: 1rem 0.5rem 1rem 0.5rem; }
+      .testimonials { max-width: 99vw; }
+      .rooms-grid, .amenities-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-content { gap: 1rem; }
+      .nav-links { top: 48px; }
+      .section-title-star {
+        font-size: 1.1em;
+        margin: 0 0.3rem;
+        transform: translateY(-1px);
+      }
+      /* No special mobile styles for #rooms in reverted version */
+      /* Show the bottom of the Nakšņošana image for better bed visibility */
+      .rooms-grid .room-card:first-child .room-img {
+        object-position: 0% 70%;
+      }
+    }
+    /* No special display for .room-disclaimer on mobile; always visible */
+    .reviews-row {
+      display: flex;
+      gap: 2rem;
+      margin: 2.5rem 0 0 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1.2rem;
+    }
+    .review-card {
+      min-width: 320px;
+      max-width: 340px;
+      background: #f3e7d7;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(166,124,82,0.08);
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 1.7rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.13em;
+      text-shadow: 0 2px 8px #e2c9a0, 0 0 2px #fff;
+    }
+    .review-text {
+      font-size: 1.05rem;
+      color: #4e342e;
+      margin-bottom: 0.8rem;
+      font-style: italic;
+    }
+    .review-author {
+      font-size: 1rem;
+      color: #7b5e3c;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-top: auto;
+    }
+    @media (min-width: 900px) {
+      .reviews-row {
+        justify-content: center;
+        overflow-x: visible;
+      }
+    }
+    .reviews-section {
+      background: #f3e7d7;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(166,124,82,0.08);
+      padding: 2.2rem 1.2rem 1.7rem 1.2rem;
+      margin: 2.5rem 0 2.5rem 0;
+    }
+    .reviews-title {
+      font-size: 2.3rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .reviews-stars-row {
+      text-align: center;
+      color: var(--gold);
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 0.18em;
+      text-shadow: 0 2px 12px #e2c9a0, 0 0 2px #fff;
+      margin-bottom: 1.2rem;
+      user-select: none;
+    }
+    @media (max-width: 600px) {
+      .reviews-title {
+        font-size: 1.5rem;
+      }
+      .reviews-stars-row {
+        font-size: 2.7rem;
+        margin-bottom: 1.5rem;
+      }
+      .reviews-row {
+        margin-top: 0;
+      }
+    }
+    /* About Us Section */
+    .about-us-section {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      background: url('dabas taka.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 60px 0;
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
+    .about-us-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--overlay-gradient);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .about-us-section .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .about-us-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .about-us-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .about-us-section p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #f0f0f0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-slider-wrapper {
+      position: relative;
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+    }
+    .about-slider {
+      position: relative;
+      min-height: 300px;
+      overflow: hidden;
+    }
+    .about-slide {
+      display: none;
+      padding: 2rem 1rem;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .about-slide.active {
+      display: block;
+    }
+    .about-slide h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .about-slide p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #f0f0f0;
+      margin-bottom: 1rem;
+      text-align: left;
+      max-width: none;
+    }
+    .about-slider-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .about-arrow {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .about-arrow:hover {
+      background: #8b5a2f;
+      transform: scale(1.1);
+    }
+    .about-arrow:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .about-dots {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .about-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .about-dot.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: scale(1.2);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .about-us-section {
+        padding: 50px 0;
+        background-attachment: scroll;
+        background-position: center 30%;
+        background-size: 120% auto;
+      }
+      .about-us-section h2 {
+        font-size: 2.5rem;
+      }
+      .about-us-section h3 {
+        font-size: 1.5rem;
+      }
+      .about-us-section p {
+        font-size: 1.1rem;
+      }
+      .about-slide h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 3px 12px rgba(0,0,0,0.7), 0 0 20px rgba(166, 124, 82, 0.3);
+        margin-bottom: 1.8rem;
+        letter-spacing: 2px;
+        line-height: 1.3;
+      }
+      .about-slide p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: #f5f5f5;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        margin-bottom: 1.2rem;
+      }
+      .about-slider {
+        min-height: 250px;
+      }
+      .about-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .about-us-section {
+        padding: 40px 0;
+        background-attachment: scroll;
+        background-position: center 30%;
+        background-size: 130% auto;
+      }
+      .about-us-section h2 {
+        font-size: 2rem;
+      }
+      .about-us-section h3 {
+        font-size: 1.3rem;
+      }
+      .about-us-section p {
+        font-size: 1rem;
+      }
+      .about-slide {
+        padding: 1.5rem 0.5rem;
+      }
+      .about-slide h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 3px 12px rgba(0,0,0,0.7), 0 0 20px rgba(166, 124, 82, 0.3);
+        margin-bottom: 1.5rem;
+        letter-spacing: 1.5px;
+        line-height: 1.3;
+      }
+      .about-slide p {
+        font-size: 1rem;
+        line-height: 1.9;
+        color: #f5f5f5;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        margin-bottom: 1rem;
+      }
+      .about-slider {
+        min-height: 200px;
+      }
+      .about-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+      .about-slider-nav {
+        gap: 1rem;
+      }
+    }
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 40px 0 20px 0;
+      background: transparent;
+      margin-bottom: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .testimonials-section h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .star-decoration {
+      color: var(--gold);
+      font-size: 2rem;
+      margin: 0 15px;
+      display: inline-block;
+      animation: star-glow 2s ease-in-out infinite alternate;
+    }
+    @media (max-width: 768px) {
+      .star-decoration {
+        display: none;
+      }
+    }
+    .star-decoration:first-child {
+      animation-delay: 0s;
+    }
+    .star-decoration:last-child {
+      animation-delay: 1s;
+    }
+    @keyframes star-glow {
+      0% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 5px var(--gold));
+      }
+      100% {
+        transform: scale(1.1) rotate(5deg);
+        filter: drop-shadow(0 0 15px var(--gold));
+      }
+    }
+    .testimonials-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 10px 20px;
+      position: relative;
+    }
+    .testimonials-wrapper {
+      position: relative;
+      max-width: 1050px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .testimonials-wrapper::before,
+    .testimonials-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .testimonials-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg) 0%, rgba(250, 240, 230, 0.6) 40%, transparent 100%);
+    }
+    .testimonials-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg) 0%, rgba(250, 240, 230, 0.6) 40%, transparent 100%);
+    }
+    .testimonials-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      gap: 30px;
+      padding: 20px 0;
+      justify-content: center;
+    }
+    .testimonials-slider::-webkit-scrollbar {
+      display: none;
+    }
+    .testimonial-card {
+      min-width: 315px;
+      max-width: 374px;
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.08);
+      border: 1.5px solid #e2d7b7;
+      scroll-snap-align: center;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+      color: #222;
+      flex-shrink: 0;
+      padding: 34px;
+    }
+    @media (max-width: 1260px) {
+      .testimonial-card {
+        min-width: 272px;
+        max-width: 314px;
+        padding: 25px;
+      }
+    }
+    @media (max-width: 900px) {
+      .testimonial-card {
+        min-width: 221px;
+        max-width: 272px;
+        padding: 17px;
+      }
+    }
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.18);
+      border-color: #d4af37;
+    }
+    .testimonial-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #222;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-card .stars {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    .testimonial-card .testimonial-author {
+      font-weight: 600;
+      color: #222;
+      font-size: 1rem;
+    }
+    .testimonial-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+    .testimonial-arrow:hover {
+      background: #b8941f;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    .testimonial-arrow.left {
+      left: -60px;
+    }
+    .testimonial-arrow.right {
+      right: -60px;
+    }
+    .testimonial-arrow.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .testimonials-section {
+        padding: 20px 0 5px 0;
+      }
+      .testimonials-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+      .testimonial-arrow {
+        display: none;
+      }
+      .testimonials-wrapper {
+        max-width: 900px;
+      }
+      .testimonials-wrapper::before,
+      .testimonials-wrapper::after {
+        width: 60px;
+      }
+      .testimonial-card {
+        min-width: 280px;
+        padding: 25px;
+      }
+      .testimonials-slider {
+        justify-content: center;
+        padding: 20px 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .testimonials-section {
+        padding: 20px 0 0 0;
+      }
+      .testimonials-section .container {
+        padding: 0 10px;
+      }
+      .testimonials-wrapper {
+        max-width: 800px;
+      }
+      .testimonials-wrapper::before,
+      .testimonials-wrapper::after {
+        width: 40px;
+      }
+      .testimonial-card {
+        min-width: 260px;
+        padding: 20px;
+      }
+      .testimonial-card p {
+        font-size: 1rem;
+      }
+      .testimonials-slider {
+        justify-content: center;
+        padding: 20px 5px;
+        gap: 20px;
+      }
+    }
+    /* Contact Us Section */
+    .contact-us-section {
+      padding: 0 0.5rem 20px 0.5rem;
+      background: transparent;
+      margin-bottom: 0;
+      border-radius: 0;
+      box-shadow: none;
+      margin-top: 0;
+    }
+    .contact-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 3rem;
+      animation: fadeInUp 0.8s ease-out;
+      border: none;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .contact-info {
+      flex: 1;
+      max-width: 50%;
+    }
+    .contact-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .contact-item:hover {
+      transform: translateX(5px);
+    }
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-details {
+      flex: 1;
+    }
+    .contact-details strong {
+      display: block;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+    .contact-details p,
+    .contact-details a {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-details a:hover {
+      color: var(--gold);
+    }
+    .contact-map {
+      flex: 1;
+      max-width: 50%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .contact-map iframe {
+      width: 100%;
+      height: 320px;
+      border: none;
+    }
+    @media (max-width: 768px) {
+      .contact-us-section {
+        padding: 10px 0;
+      }
+      .contact-card {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        margin: 0 1rem;
+      }
+      .contact-info,
+      .contact-map {
+        max-width: 100%;
+      }
+      .contact-info h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+      .contact-info h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .contact-item {
+        margin-bottom: 1.2rem;
+      }
+      .contact-map iframe {
+        height: 280px;
+      }
+    }
+    @media (max-width: 480px) {
+      .contact-us-section {
+        padding: 5px 0.5rem;
+      }
+      .contact-card {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+      }
+      .contact-info h2 {
+        font-size: 1.8rem;
+      }
+      .contact-item {
+        gap: 0.8rem;
+      }
+      .contact-icon {
+        font-size: 1.3rem;
+      }
+      .contact-details strong {
+        font-size: 1rem;
+      }
+      .contact-details p,
+      .contact-details a {
+        font-size: 0.95rem;
+      }
+      .contact-map iframe {
+        height: 250px;
+      }
+    }
+    /* Footer Styles */
+    .footer {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 50px 0 25px;
+      border-top: 3px solid var(--gold);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    .footer-section ul li a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-weight: 500;
+    }
+    .footer-section ul li a:hover {
+      color: var(--gold);
+      transform: translateX(5px);
+    }
+    .footer-section ul li:not(:has(a)) {
+      color: #e8e0d5;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(166, 124, 82, 0.3);
+      padding-top: 25px;
+      text-align: center;
+    }
+    .footer-bottom p {
+      color: #d4c4b0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 0.9rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .design-credit {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #d4c4b0;
+    }
+    .company-name {
+      color: var(--gold);
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .footer {
+        padding: 40px 0 20px;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 0 15px;
+      }
+      .footer-section h3 {
+        font-size: 1.3rem;
+        text-align: center;
+      }
+      .footer-section ul {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Upesrūķi</div>
+      <div class="nav-links">
+        <a href="under-construction.html">Par mums</a>
+        <a href="under-construction.html">Istabas</a>
+        <a href="under-construction.html">Ērtības</a>
+        <a href="under-construction.html">Atsauksmes</a>
+        <a href="under-construction.html">Kontakti</a>
+      </div>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-title" style="font-size:3.2rem;">Viesu nams “Upesrūķi”</div>
+      <div class="hero-subtitle">Divstāvu pirts-namiņš uz pussalas Tumšupes krastā – līdz 18 viesiem. Pirts, kamīnzāle, kubls, rotaļu laukums, mini zoo, volejbols, stāvvieta.</div>
+      <a href="#contact" class="gold-btn" style="box-shadow:0 0 16px 4px #bfa14a;">Veikt rezervāciju</a>
+    </div>
+  </section>
+  <main>
+    <section id="rooms">
+      <div class="section-title section-title-large">
+        <span class="section-title-star">★</span>
+        PIE MUMS
+        <span class="section-title-star">★</span>
+      </div>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-image">
+            <img src="naksnoasana.jpg" alt="Nakšņošana gulta" />
+          </div>
+          <div class="room-content">
+            <h3>Nakšņošana</h3>
+            <p>13 gultas, līdz 18 viesiem.</p>
+            <span class="room-price">€350–400/nakts</span>
+            <a href="under-construction.html" class="room-btn">Skatīt</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <div class="room-image">
+            <img src="liela pirts.jpg" alt="Lielā pirts" />
+          </div>
+          <div class="room-content">
+            <h3>Lielā pirts</h3>
+            <p>Līdz 7 cilvēkiem. Pieejams tikai, nomājot viesu namu.</p>
+            <span class="room-price">€30/nakts</span>
+            <a href="under-construction.html" class="room-btn">Skatīt</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <div class="room-image">
+            <img src="maza pirts (2).jpg" alt="Mazā pirts" />
+          </div>
+          <div class="room-content">
+            <h3>Mazā pirts</h3>
+            <p>Līdz 2 cilvēkiem.</p>
+            <span class="room-price">€80–100/nakts</span>
+            <a href="under-construction.html" class="room-btn">Skatīt</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <div class="room-image">
+            <img src="laukums 1.jpg" alt="Atpūties pie dabas" />
+          </div>
+          <div class="room-content">
+            <h3>Atpūties pie dabas</h3>
+            <p>Līdz 18 cilvēkiem. Atpūta dabā</p>
+            <a href="under-construction.html" class="room-btn">Skatīt</a>
+          </div>
+        </div>
+      </div>
+      <!-- About Us Section -->
+      <section id="about-us" class="about-us-section">
+        <div class="container">
+          <div class="about-slider-wrapper">
+            <div class="about-slider" id="about-slider">
+              <div class="about-slide active">
+                <h3>Dižozolu dabas taka</h3>
+                <p>Ir iekārtota Dižozolu dabas taka. Ir tapis Informācijas stends, kokos iekārtotas desmit bišu dores sešu metru augstumā, tur dzīvo savvaļas bites. Ir uzcelta nojume, "zalktis" bērnu aktivitātēm, kāpnes, 2 tiltiņi, informatīvi izglītojošie stendi, soliņi un galds.</p>
+              </div>
+              <div class="about-slide">
+                <h3>Mini Zoo</h3>
+                <p>Lielas un mazas vistiņas, raibas un ar cekuliem dzīvo "Putnu mājā". Tās pastaigājas nožogotā terasē. Dēj olas. Labsirdīgs gailītis. Draudzīgas zosis ar skaļām balsīm. Putnus drīkst barot ar graudiem, sēklām, baltmaizi.</p>
+              </div>
+              <div class="about-slide">
+                <h3>Banketi</h3>
+                <p>Ēdināšanā sadarbojamies ar divām profesionālām pavārītēm, kuras pēc klienta vēlmēm klāj svinību galdus. Bagātīgi klātie un skaisti noformētie galdi patīkami pārsteigs jebkuru gardēdi! Mūzika – ir klavieres, akordeons, karaoke, mūzikas centrs ar USB, ir vieta 2 muzikantiem un mini dejas placis.</p>
+              </div>
+            </div>
+            <div class="about-slider-nav">
+              <button class="about-arrow left" id="about-left">←</button>
+              <div class="about-dots">
+                <span class="about-dot active" data-slide="0"></span>
+                <span class="about-dot" data-slide="1"></span>
+                <span class="about-dot" data-slide="2"></span>
+              </div>
+              <button class="about-arrow right" id="about-right">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials-section">
+        <div class="container">
+          <h2><span class="star-decoration">⭐</span> APMEKLĒTĀJU ATSAUKSMES <span class="star-decoration">⭐</span></h2>
+          <div class="testimonials-wrapper">
+            <div class="testimonials-slider" id="testimonials-slider">
+              <div class="testimonial-card">
+                <p>"Lieliska vieta atpūtai ar ģimeni! Pirts un daba – ideāla kombinācija."</p>
+                <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
+                <span class="testimonial-author">— Līga, Rīga</span>
+              </div>
+              <div class="testimonial-card">
+                <p>"Ļoti mājīgi, tīri un viesmīlīgi. Noteikti atgriezīsimies!"</p>
+                <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
+                <span class="testimonial-author">— Jānis, Liepāja</span>
+              </div>
+              <div class="testimonial-card">
+                <p>"Skaista apkārtne un lieliska pirts pieredze. Iesaku visiem!"</p>
+                <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
+                <span class="testimonial-author">— Ilze, Ventspils</span>
+              </div>
+            </div>
+            <div class="testimonial-arrow left" id="testimonial-left">←</div>
+            <div class="testimonial-arrow right" id="testimonial-right">→</div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="contact-us-section">
+      <div class="contact-card">
+        <div class="contact-info">
+          <h2>Sazinies Ar Mums</h2>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div class="contact-details">
+              <strong>Mēs atrodamies</strong>
+              <p>2137, 2. līnija 9B, Skuķīši, Garkalnes pagasts, LV-2137</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div class="contact-details">
+              <strong>Zvani mums</strong>
+              <a href="tel:+37129476717">+371 29476717</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div class="contact-details">
+              <strong>E-Pasts</strong>
+              <a href="mailto:upesruki@inbox.lv">upesruki@inbox.lv</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000!2d24.5024764!3d57.005774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e934fd84944f53%3A0x96f72d062aa175d0!2zUGlydHMtdmllc3UgbmFtcyDigJjigJlVcGVzcsWrxLdp4oCZ4oCZ!5e0!3m2!1slv-LV!2slv!4v1701234567890!5m2!1slv-LV!2slv" 
+            width="100%" 
+            height="320" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Galvenās lapas</h3>
+        <ul>
+          <li><a href="under-construction.html">Pakalpojumi</a></li>
+          <li><a href="under-construction.html">Atsauksmes</a></li>
+          <li><a href="under-construction.html">Kontakti</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Informācija</h3>
+        <ul>
+          <li><a href="under-construction.html">Kontakti</a></li>
+          <li><a href="tel:+37129476717">Uzzināt cenu</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Kontaktinformācija</h3>
+        <ul>
+          <li><a href="mailto:upesruki@inbox.lv">upesruki@inbox.lv</a></li>
+          <li><a href="tel:+37129476717">+371 29476717</a></li>
+          <li>2137, 2. līnija 9B, Skuķīši, Garkalnes pagasts, LV-2137</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Viesu nams "Upesrūķi". Visas tiesības aizsargātas</p>
+      <p class="design-credit">Mājas lapu Izstrādāja <span class="company-name">SIA A&J Marketing group</span></p>
+    </div>
+  </footer>
+  <script>
+    // Testimonials slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let current = 0;
+    function showTestimonial(idx) {
+      testimonials[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx;
+      testimonials[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    // Auto-slide
+    setInterval(() => {
+      let next = (current + 1) % testimonials.length;
+      showTestimonial(next);
+    }, 6000);
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script>
+    // Hamburger menu for mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.createElement('button');
+      navToggle.className = 'nav-toggle';
+      navToggle.setAttribute('aria-label', 'Atvērt izvēlni');
+      navToggle.innerHTML = '<span></span><span></span><span></span>';
+      const nav = document.querySelector('nav');
+      const navLinks = document.querySelector('.nav-links');
+      nav.insertBefore(navToggle, navLinks);
+      navToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+      });
+      // Close menu on link click (mobile)
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('open');
+        });
+      });
+    });
+  </script>
+  <script>
+    // About slider functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.about-slide');
+      const dots = document.querySelectorAll('.about-dot');
+      const leftArrow = document.getElementById('about-left');
+      const rightArrow = document.getElementById('about-right');
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Add active class to current slide and dot
+        if (slides[index]) {
+          slides[index].classList.add('active');
+        }
+        if (dots[index]) {
+          dots[index].classList.add('active');
+        }
+
+        // Update background image based on slide
+        const aboutSection = document.querySelector('.about-us-section');
+        const images = ['dabas taka.jpg', 'zoo v2.jpg', 'galds.jpeg'];
+        if (aboutSection && images[index]) {
+          aboutSection.style.backgroundImage = `url('${images[index]}')`;
+        }
+
+        // Update arrow states
+        leftArrow.disabled = index === 0;
+        rightArrow.disabled = index === slides.length - 1;
+      }
+
+      function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          showSlide(currentSlide);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          showSlide(currentSlide);
+        }
+      }
+
+      // Arrow click handlers
+      rightArrow.addEventListener('click', nextSlide);
+      leftArrow.addEventListener('click', prevSlide);
+
+      // Dot click handlers
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+        });
+      });
+
+      // Auto-play slider (optional - uncomment if desired)
+      // setInterval(() => {
+      //   if (currentSlide < slides.length - 1) {
+      //     nextSlide();
+      //   } else {
+      //     currentSlide = 0;
+      //     showSlide(currentSlide);
+      //   }
+      // }, 5000);
+
+      // Initialize
+      showSlide(0);
+    });
+  </script>
+  <script>
+    // Testimonials Slider Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById('testimonials-slider');
+      const leftArrow = document.getElementById('testimonial-left');
+      const rightArrow = document.getElementById('testimonial-right');
+      
+      if (slider && leftArrow && rightArrow) {
+        const cardWidth = 330; // card width + gap
+        
+        function updateArrows() {
+          const isAtStart = slider.scrollLeft === 0;
+          const isAtEnd = slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 10;
+          
+          leftArrow.classList.toggle('disabled', isAtStart);
+          rightArrow.classList.toggle('disabled', isAtEnd);
+        }
+        
+        leftArrow.addEventListener('click', function() {
+          if (!leftArrow.classList.contains('disabled')) {
+            slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+          }
+        });
+        
+        rightArrow.addEventListener('click', function() {
+          if (!rightArrow.classList.contains('disabled')) {
+            slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+          }
+        });
+        
+        slider.addEventListener('scroll', updateArrows);
+        
+        // Initialize arrow states
+        updateArrows();
+        
+        // Center the middle card on load
+        const cards = slider.querySelectorAll('.testimonial-card');
+        if (cards.length > 0) {
+          const middleIndex = Math.floor(cards.length / 2);
+          const centerOffset = (slider.clientWidth - cards[0].offsetWidth) / 2;
+          slider.scrollLeft = (middleIndex * cardWidth) - centerOffset;
+        }
+        
+        // Touch/swipe support for mobile
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        slider.addEventListener('mousedown', function(e) {
+          isDown = true;
+          slider.style.cursor = 'grabbing';
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+        
+        slider.addEventListener('mouseleave', function() {
+          isDown = false;
+          slider.style.cursor = 'grab';
+        });
+        
+        slider.addEventListener('mouseup', function() {
+          isDown = false;
+          slider.style.cursor = 'grab';
+        });
+        
+        slider.addEventListener('mousemove', function(e) {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 2;
+          slider.scrollLeft = scrollLeft - walk;
+        });
+      }
+    });
+  </script>
+</body>
+</html> 
