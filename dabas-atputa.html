@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dabas Atpūta - Viesu nams "Upesrūķi"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #a67c52;
+            --white: #f3f3f3;
+            --overlay-dark: rgba(78, 52, 46, 0.55);
+            --overlay-gradient: linear-gradient(180deg, rgba(78,52,46,0.55) 60%, rgba(78,52,46,0.85) 100%);
+            --headline-size: 3.5rem;
+            --subheadline-size: 1.35rem;
+            --button-radius: 999px;
+            --button-padding: 0.9em 2.2em;
+            --transition: 0.25s cubic-bezier(.4,0,.2,1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: #FAF0E6;
+            color: #222;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #FAF0E6;
+            box-shadow: 0 2px 16px rgba(166,124,82,0.13);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #222;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #222;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #FAF0E6;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 1px solid #e0e0e0;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 2rem;
+            color: #222;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f0e6d6;
+            color: var(--gold);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+                 /* Hero Section */
+         .hero {
+             position: relative;
+             height: 60vh;
+             overflow: hidden;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             text-align: center;
+             color: #fff;
+         }
+         
+         .hero-slider {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             display: flex;
+             transition: transform 0.5s ease-in-out;
+         }
+         
+         .hero-slide {
+             min-width: 100%;
+             height: 100%;
+             background-size: cover;
+             background-position: center 55%;
+             position: relative;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+         
+         .hero-slide::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: linear-gradient(rgba(78,52,46,0.6), rgba(78,52,46,0.6));
+             z-index: 1;
+         }
+         
+         .hero-content {
+             position: relative;
+             z-index: 2;
+             max-width: 800px;
+             padding: 0 2rem;
+         }
+         
+         .hero-content h1 {
+             font-family: 'Merriweather', serif;
+             font-size: 3.5rem;
+             font-weight: 700;
+             margin-bottom: 1rem;
+             text-shadow: 0 4px 32px rgba(78,52,46,0.32);
+             opacity: 0;
+             transform: translateY(30px);
+             transition: all 0.6s ease;
+         }
+         
+         .hero-content.active h1 {
+             opacity: 1;
+             transform: translateY(0);
+         }
+         
+         .hero-content p {
+             font-size: 1.3rem;
+             max-width: 600px;
+             margin: 0 auto;
+             text-shadow: 0 2px 12px rgba(78,52,46,0.22);
+             opacity: 0;
+             transform: translateY(30px);
+             transition: all 0.6s ease 0.2s;
+         }
+         
+         .hero-content.active p {
+             opacity: 1;
+             transform: translateY(0);
+         }
+         
+         /* Hero Navigation */
+         .hero-nav {
+             position: absolute;
+             bottom: 30px;
+             left: 50%;
+             transform: translateX(-50%);
+             display: flex;
+             gap: 12px;
+             z-index: 3;
+         }
+         
+         .hero-dot {
+             width: 12px;
+             height: 12px;
+             border-radius: 50%;
+             background: rgba(255,255,255,0.5);
+             cursor: pointer;
+             transition: all 0.3s ease;
+             border: 2px solid transparent;
+         }
+         
+         .hero-dot.active {
+             background: var(--gold);
+             border-color: #fff;
+             transform: scale(1.2);
+         }
+         
+         .hero-dot:hover {
+             background: var(--gold);
+             transform: scale(1.1);
+         }
+         
+         /* Hero Arrows */
+         .hero-arrow {
+             position: absolute;
+             top: 50%;
+             transform: translateY(-50%);
+             background: rgba(0,0,0,0.5);
+             color: #fff;
+             border: none;
+             width: 50px;
+             height: 50px;
+             border-radius: 50%;
+             cursor: pointer;
+             font-size: 1.5rem;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             transition: all 0.3s ease;
+             z-index: 3;
+         }
+         
+         .hero-arrow:hover {
+             background: var(--gold);
+             color: #222;
+             transform: translateY(-50%) scale(1.1);
+         }
+         
+         .hero-prev {
+             left: 20px;
+         }
+         
+         .hero-next {
+             right: 20px;
+         }
+
+                 /* Main Content */
+         .main-content {
+             max-width: 1600px;
+             margin: 0 auto;
+             padding: 2rem 3vw 4rem 3vw;
+             position: relative;
+         }
+
+        /* Two-Column Layout Sections */
+        .two-column-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin: 6rem 0;
+            min-height: 380px;
+        }
+
+        .two-column-section:last-of-type {
+            margin-bottom: 2rem;
+        }
+
+        .two-column-section:nth-child(even) {
+            direction: rtl;
+        }
+
+        .two-column-section:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .content-column {
+            padding: 2rem;
+        }
+
+        .image-column {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 16 / 10;
+            max-height: 420px;
+        }
+
+        .image-column img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-column:hover img {
+            transform: scale(1.05);
+        }
+
+        .section-title-large {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(166, 124, 82, 0.3);
+        }
+
+        /* Restaurant Features Grid */
+        .restaurant-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(166, 124, 82, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .feature-description {
+            font-family: 'Inter', sans-serif;
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #222;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .main-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 3rem;
+            margin-top: 0;
+            padding-top: 0;
+            position: relative;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-headline::before,
+        .main-headline::after {
+            content: '❦';
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 0 2rem;
+            opacity: 0.9;
+            filter: drop-shadow(0 2px 8px rgba(166, 124, 82, 0.3));
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: none;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            position: relative;
+            border-top: 2px solid rgba(166, 124, 82, 0.2);
+            border-bottom: 2px solid rgba(166, 124, 82, 0.2);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(166, 124, 82, 0.03) 50%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .content-section h2 {
+            color: #1a1a1a;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 800;
+            position: relative;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .content-section h2::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .content-section p {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: #2d3748;
+            margin-bottom: 2.5rem;
+            text-align: justify;
+            font-weight: 400;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            background: none;
+            padding: 3rem 0;
+            margin: 4rem 0;
+            position: relative;
+            border-left: 4px solid var(--gold);
+            padding-left: 3rem;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .highlight-text::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            font-size: 4rem;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .restaurant-section {
+            background: none;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            position: relative;
+            border-top: 2px solid rgba(166, 124, 82, 0.2);
+            border-bottom: 2px solid rgba(166, 124, 82, 0.2);
+        }
+
+        .restaurant-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, transparent 30%, rgba(166, 124, 82, 0.03) 50%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .restaurant-section h2 {
+            color: #1a1a1a;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 800;
+            position: relative;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .restaurant-section h2::before {
+            content: '🌲';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .restaurant-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .restaurant-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .restaurant-feature {
+            background: none;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border-bottom: 2px solid transparent;
+        }
+
+        .restaurant-feature:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--gold);
+        }
+
+        .restaurant-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .restaurant-feature:hover::before {
+            width: 60px;
+        }
+
+        .restaurant-feature .icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+            transition: all 0.4s ease;
+            opacity: 0.8;
+        }
+
+        .restaurant-feature img.icon {
+            opacity: 1;
+            transition: none;
+        }
+
+        .restaurant-feature:hover .icon {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .restaurant-feature:hover img.icon {
+            transform: none;
+            opacity: 1;
+        }
+
+        .restaurant-feature h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 1.5rem 0;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .restaurant-feature p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        /* Traditions Section - Improved Styling */
+        .traditions-section {
+            padding: 1rem 0 2rem 0;
+            margin: 0.5rem 0 2rem 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+
+        .traditions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(166, 124, 82, 0.02) 0%, transparent 50%, rgba(166, 124, 82, 0.02) 100%);
+            pointer-events: none;
+        }
+
+        .traditions-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin: 0;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            position: relative;
+            padding: 0.8rem 2rem;
+            display: block;
+            width: 100%;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 240, 230, 0.9) 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(166, 124, 82, 0.15);
+            border: 2px solid rgba(166, 124, 82, 0.1);
+        }
+
+        .traditions-title::before {
+            content: '';
+            display: none;
+        }
+
+        .traditions-title::after {
+            content: '';
+            display: none;
+        }
+
+        .traditions-title-wrapper {
+            text-align: center;
+            margin: 0 0 3rem 0;
+            position: relative;
+            padding: 0;
+            flex-shrink: 0;
+            width: 100%;
+            align-self: center;
+        }
+
+        .traditions-title-wrapper::before {
+            content: '';
+            display: none;
+        }
+
+        .traditions-title-wrapper::after {
+            content: '';
+            display: none;
+        }
+
+        .traditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .tradition-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(166, 124, 82, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tradition-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), rgba(166, 124, 82, 0.5));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .tradition-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(166, 124, 82, 0.2);
+            border-color: var(--gold);
+        }
+
+        .tradition-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tradition-card-image {
+            width: 100%;
+            max-width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .tradition-card:hover .tradition-card-image {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(166, 124, 82, 0.25);
+        }
+
+        .tradition-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 1.5rem 0;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .tradition-card h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .tradition-card:hover h4::after {
+            width: 80px;
+        }
+
+        .tradition-card p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .tradition-card-image {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tradition-card-image:hover {
+            opacity: 0.9;
+        }
+
+        /* Lightbox Gallery Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(166, 124, 82, 0.8);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(166, 124, 82, 0.8);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .lightbox-thumbnails {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            max-width: 90%;
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .lightbox-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .lightbox-thumbnail:hover,
+        .lightbox-thumbnail.active {
+            opacity: 1;
+            border-color: var(--gold);
+            transform: scale(1.1);
+        }
+
+        /* Image Section */
+        .image-section {
+            text-align: center;
+            margin: 5rem 0;
+            position: relative;
+        }
+
+        .image-section::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0;
+            box-shadow: none;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(166, 124, 82, 0.3);
+        }
+
+        .image-section img:hover {
+            transform: scale(1.02);
+            border-color: var(--gold);
+        }
+
+        .image-caption {
+            margin-top: 2rem;
+            font-style: italic;
+            color: #4a5568;
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Decorative elements */
+        .floating-decoration {
+            position: absolute;
+            font-size: 2.5rem;
+            color: var(--gold);
+            opacity: 0.15;
+            animation: float 10s ease-in-out infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 15px rgba(166, 124, 82, 0.2));
+        }
+
+        .floating-decoration:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .floating-decoration:nth-child(2) {
+            top: 25%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-decoration:nth-child(3) {
+            bottom: 20%;
+            left: 12%;
+            animation-delay: 6s;
+        }
+
+        .floating-decoration:nth-child(4) {
+            bottom: 30%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: translateY(-25px) rotate(8deg) scale(1.1);
+                opacity: 0.25;
+            }
+        }
+
+                 /* Footer */
+         .footer {
+             background: #2a2a2a;
+             color: #fff;
+             padding: 50px 0 25px;
+             border-top: 3px solid var(--gold);
+         }
+ 
+         .footer-content {
+             max-width: 1200px;
+             margin: 0 auto;
+             padding: 0 20px;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 40px;
+         }
+ 
+         .footer-section h3 {
+             font-family: 'Playfair Display', serif;
+             font-size: 1.4rem;
+             font-weight: 700;
+             color: var(--gold);
+             margin-bottom: 20px;
+         }
+ 
+         .footer-section ul {
+             list-style: none;
+             padding: 0;
+             margin: 0;
+         }
+ 
+         .footer-section ul li {
+             margin-bottom: 12px;
+         }
+ 
+         .footer-section ul li a {
+             color: #f5f5f5;
+             text-decoration: none;
+             font-family: 'Open Sans', Arial, sans-serif;
+             font-size: 0.95rem;
+             transition: all 0.3s ease;
+         }
+ 
+         .footer-section ul li a:hover {
+             color: var(--gold);
+             transform: translateX(5px);
+         }
+ 
+         .footer-section ul li:not(:has(a)) {
+             color: #e8e0d5;
+             font-family: 'Open Sans', Arial, sans-serif;
+             font-size: 0.95rem;
+             line-height: 1.6;
+             font-weight: 400;
+         }
+ 
+         .footer-bottom {
+             border-top: 1px solid rgba(166, 124, 82, 0.3);
+             padding-top: 25px;
+             text-align: center;
+         }
+ 
+         .footer-bottom p {
+             color: #d4c4b0;
+             font-family: 'Open Sans', Arial, sans-serif;
+             font-size: 0.9rem;
+             margin: 0;
+             line-height: 1.6;
+         }
+ 
+         .design-credit {
+             margin-top: 8px !important;
+             font-size: 0.8rem !important;
+             color: #d4c4b0 !important;
+         }
+ 
+         .company-name {
+             color: var(--gold);
+             font-weight: 500;
+         }
+
+                 /* Responsive Design */
+         @media (max-width: 768px) {
+             .header-content {
+                 padding: 0.8rem 1rem;
+             }
+ 
+             .logo {
+                 font-size: 1.5rem;
+             }
+ 
+             .nav-links {
+                 display: none;
+             }
+ 
+             .mobile-menu-btn {
+                 display: block;
+                 font-size: 1.3rem;
+             }
+ 
+             .hero {
+                 height: 50vh;
+             }
+ 
+             .hero-content h1 {
+                 font-size: 2.2rem;
+                 margin-bottom: 0.8rem;
+             }
+ 
+             .hero-content p {
+                 font-size: 1rem;
+                 max-width: 90%;
+             }
+ 
+             .hero-nav {
+                 bottom: 20px;
+             }
+ 
+             .hero-dot {
+                 width: 10px;
+                 height: 10px;
+             }
+ 
+             .hero-arrow {
+                 width: 40px;
+                 height: 40px;
+                 font-size: 1.2rem;
+             }
+ 
+             .hero-prev {
+                 left: 10px;
+             }
+ 
+             .hero-next {
+                 right: 10px;
+             }
+ 
+             .main-content {
+                 padding: 1.5rem 1rem 3rem 1rem;
+             }
+ 
+             .two-column-section {
+                 grid-template-columns: 1fr;
+                 gap: 2rem;
+                 margin: 3rem 0;
+                 min-height: auto;
+             }
+ 
+             .two-column-section:nth-child(even) {
+                 direction: ltr;
+             }
+ 
+             .content-column {
+                 padding: 1rem 0;
+             }
+ 
+             .image-column {
+                 max-height: 250px;
+                 aspect-ratio: 16 / 10;
+             }
+ 
+             .section-title-large {
+                 font-size: 2.2rem;
+                 margin-bottom: 1.5rem;
+                 line-height: 1.3;
+             }
+ 
+             .section-description {
+                 font-size: 1rem;
+                 line-height: 1.6;
+                 margin-bottom: 1.5rem;
+             }
+ 
+             .section-title {
+                 font-size: 1.8rem;
+             }
+ 
+             .main-headline {
+                 font-size: 2.5rem;
+                 margin-bottom: 1.5rem;
+                 letter-spacing: -0.5px;
+                 padding: 0 0.5rem;
+             }
+ 
+             .main-headline::before,
+             .main-headline::after {
+                 font-size: 1.5rem;
+                 margin: 0 0.5rem;
+             }
+ 
+             .content-section,
+             .restaurant-section {
+                 padding: 1.5rem 0;
+                 margin: 2rem 0;
+             }
+ 
+             .content-section h2,
+             .restaurant-section h2 {
+                 font-size: 1.8rem;
+                 margin-bottom: 2rem;
+             }
+ 
+             .content-section p {
+                 font-size: 1rem;
+                 line-height: 1.6;
+             }
+ 
+             .highlight-text {
+                 padding: 1.5rem;
+                 font-size: 1.2rem;
+             }
+ 
+             .restaurant-info {
+                 grid-template-columns: 1fr;
+                 gap: 1.5rem;
+             }
+ 
+             .restaurant-feature {
+                 padding: 1.5rem;
+             }
+
+             .traditions-section {
+                 padding: 1.5rem 0;
+                 margin: 1.5rem 0;
+                 min-height: auto;
+             }
+
+             .traditions-title {
+                 font-size: 2rem;
+                 margin-bottom: 1.5rem;
+                 padding: 0.6rem 1rem;
+                 border-radius: 12px;
+                 box-shadow: 0 4px 15px rgba(166, 124, 82, 0.1);
+             }
+
+             .traditions-title::before,
+             .traditions-title::after {
+                 font-size: 1.1rem;
+                 left: 0.3rem;
+                 right: 0.3rem;
+             }
+
+             .traditions-title-wrapper {
+                 margin: 2rem auto;
+                 padding: 0.5rem 0;
+             }
+
+             .traditions-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1.5rem;
+                 margin-top: 2.5rem;
+             }
+
+             .tradition-card {
+                 padding: 2rem;
+             }
+
+             .tradition-card-image {
+                 max-width: 100%;
+                 height: 250px;
+             }
+
+             .tradition-card h4 {
+                 font-size: 1.5rem;
+             }
+
+             .tradition-card p {
+                 font-size: 1rem;
+             }
+ 
+             .floating-decoration {
+                 display: none;
+             }
+ 
+             .footer {
+                 padding: 40px 0 20px;
+             }
+             
+             .footer-content {
+                 grid-template-columns: 1fr;
+                 gap: 35px;
+                 padding: 0 15px;
+             }
+             
+             .footer-section h3 {
+                 font-size: 1.3rem;
+                 text-align: center;
+             }
+             
+             .footer-section ul {
+                 text-align: center;
+             }
+         }
+
+                 @media (max-width: 480px) {
+             .header-content {
+                 padding: 0.6rem 0.8rem;
+             }
+ 
+             .logo {
+                 font-size: 1.3rem;
+             }
+ 
+             .hero {
+                 height: 45vh;
+             }
+ 
+             .hero-content h1 {
+                 font-size: 1.8rem;
+                 margin-bottom: 0.6rem;
+             }
+ 
+             .hero-content p {
+                 font-size: 0.9rem;
+                 max-width: 95%;
+             }
+ 
+             .hero-nav {
+                 bottom: 15px;
+             }
+ 
+             .hero-dot {
+                 width: 8px;
+                 height: 8px;
+             }
+ 
+             .hero-arrow {
+                 width: 35px;
+                 height: 35px;
+                 font-size: 1rem;
+             }
+ 
+             .main-content {
+                 padding: 1rem 0.8rem 2rem 0.8rem;
+             }
+ 
+             .two-column-section {
+                 gap: 1.5rem;
+                 margin: 2rem 0;
+             }
+ 
+             .content-column {
+                 padding: 0.5rem 0;
+             }
+ 
+             .image-column {
+                 max-height: 200px;
+             }
+ 
+             .section-title-large {
+                 font-size: 1.8rem;
+                 margin-bottom: 1rem;
+             }
+ 
+             .section-description {
+                 font-size: 0.9rem;
+                 line-height: 1.5;
+                 margin-bottom: 1rem;
+             }
+ 
+             .main-headline {
+                 font-size: 2rem;
+                 margin-bottom: 1rem;
+                 letter-spacing: 0.5px;
+                 padding: 0 0.5rem;
+             }
+ 
+             .main-headline::before,
+             .main-headline::after {
+                 font-size: 1.5rem;
+                 margin: 0 0.5rem;
+             }
+ 
+             .content-section,
+             .restaurant-section {
+                 padding: 1rem 0;
+             }
+ 
+             .content-section h2,
+             .restaurant-section h2 {
+                 font-size: 1.6rem;
+                 margin-bottom: 1.5rem;
+             }
+ 
+             .content-section p {
+                 font-size: 0.9rem;
+                 line-height: 1.5;
+             }
+ 
+             .highlight-text {
+                 padding: 1rem;
+                 font-size: 1.1rem;
+             }
+
+             .traditions-section {
+                 padding: 1rem 0;
+                 margin: 1rem 0;
+                 min-height: auto;
+             }
+
+             .traditions-title {
+                 font-size: 1.6rem;
+                 margin-bottom: 1.5rem;
+                 padding: 0.5rem 0.8rem;
+                 border-radius: 10px;
+                 line-height: 1.3;
+                 box-shadow: 0 4px 12px rgba(166, 124, 82, 0.1);
+             }
+
+             .traditions-title::before,
+             .traditions-title::after {
+                 font-size: 0.9rem;
+                 left: 0.2rem;
+                 right: 0.2rem;
+             }
+
+             .traditions-title-wrapper {
+                 margin: 1.5rem auto;
+                 padding: 0.3rem 0;
+             }
+
+             .traditions-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1.2rem;
+                 margin-top: 2rem;
+             }
+
+             .tradition-card {
+                 padding: 1.5rem;
+             }
+
+             .tradition-card-image {
+                 height: 220px;
+                 margin-bottom: 1.5rem;
+             }
+
+             .tradition-card h4 {
+                 font-size: 1.3rem;
+                 margin-bottom: 1rem;
+             }
+
+             .tradition-card p {
+                 font-size: 0.95rem;
+                 line-height: 1.6;
+             }
+
+             .lightbox-close {
+                 top: 10px;
+                 right: 15px;
+                 font-size: 2rem;
+                 width: 40px;
+                 height: 40px;
+             }
+
+             .lightbox-nav {
+                 font-size: 1.5rem;
+                 padding: 10px 15px;
+             }
+
+             .lightbox-prev {
+                 left: 10px;
+             }
+
+             .lightbox-next {
+                 right: 10px;
+             }
+
+             .lightbox-thumbnails {
+                 bottom: 60px;
+                 gap: 8px;
+             }
+
+             .lightbox-thumbnail {
+                 width: 60px;
+                 height: 60px;
+             }
+
+             .lightbox-counter {
+                 bottom: 10px;
+                 font-size: 1rem;
+                 padding: 8px 15px;
+             }
+ 
+             .footer-content {
+                 padding: 25px 10px 0 10px;
+                 gap: 20px;
+             }
+             
+             .footer {
+                 padding: 25px 0 10px;
+             }
+             
+             .footer-section h3 {
+                 font-size: 1rem;
+                 margin-bottom: 12px;
+             }
+             
+             .footer-section ul li {
+                 margin-bottom: 6px;
+             }
+ 
+             .footer-section ul li a {
+                 font-size: 0.85rem;
+             }
+         }
+
+                 /* Responsive Design for Two-Column Layout */
+        @media (max-width: 1024px) {
+            .two-column-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+ 
+            .two-column-section:nth-child(even) {
+                direction: ltr;
+            }
+ 
+            .section-title-large {
+                font-size: 3rem;
+            }
+
+            .traditions-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: 1.5rem;
+            }
+
+            .traditions-title {
+                font-size: 3.5rem;
+            }
+
+            .traditions-title-wrapper {
+                margin-bottom: 2rem;
+            }
+
+            .traditions-grid {
+                margin-top: 0;
+            }
+
+            .traditions-section {
+                min-height: auto;
+                padding-bottom: 1rem;
+            }
+        }
+ 
+         @media (max-width: 768px) {
+             .two-column-section {
+                 margin: 3rem 0;
+                 gap: 2rem;
+                 min-height: 0;
+             }
+
+             .two-column-section:last-of-type {
+                 margin-bottom: 1.5rem;
+             }
+ 
+             .content-column {
+                 padding: 1rem 0;
+             }
+ 
+             .image-column {
+                 max-height: 250px;
+                 aspect-ratio: 16 / 10;
+             }
+ 
+             .section-title-large {
+                 font-size: 2.2rem;
+                 margin-bottom: 1.5rem;
+             }
+ 
+             .section-description {
+                 font-size: 1rem;
+                 line-height: 1.6;
+             }
+ 
+             .restaurant-features {
+                 grid-template-columns: 1fr;
+                 gap: 2rem;
+             }
+         }
+ 
+        @media (max-width: 480px) {
+            .two-column-section {
+                margin: 2rem 0;
+                gap: 1.5rem;
+            }
+
+            .two-column-section:last-of-type {
+                margin-bottom: 1rem;
+            }
+
+            .content-column {
+                padding: 0.5rem 0;
+            }
+ 
+             .image-column {
+                 max-height: 200px;
+                 aspect-ratio: 16 / 10;
+             }
+ 
+             .section-title-large {
+                 font-size: 1.8rem;
+                 margin-bottom: 1rem;
+             }
+ 
+             .section-description {
+                 font-size: 0.9rem;
+                 line-height: 1.5;
+             }
+         }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">Upesrūķi</a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-links">
+                <a href="index.html">Sākums</a>
+                <a href="index.html#about-us">Par mums</a>
+                <a href="index.html#rooms">Istabas</a>
+                <a href="index.html#testimonials">Atsauksmes</a>
+                <a href="index.html#contact-us">Kontakti</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Sākums</a>
+            <a href="index.html#about-us">Par mums</a>
+            <a href="index.html#rooms">Istabas</a>
+            <a href="index.html#testimonials">Atsauksmes</a>
+            <a href="index.html#contact-us">Kontakti</a>
+        </div>
+    </header>
+
+         <!-- Hero Section -->
+     <section class="hero">
+         <div class="hero-slider" id="hero-slider">
+                           <div class="hero-slide" style="background-image: url('pirtsbildes.jpg');">
+                  <div class="hero-content active">
+                      <h1>Klusums Pierīgā</h1>
+                      <p>Vasarā šeit var atpūsties no pilsētas tveices, makšķerēt, baudīt saules un ūdens peldes Tumšupē.<br><br>Bērniem no 2 - 12 gadu vecumam ir iespējamas aktivitātes rotaļu pilsētiņā. Sportot var pludmales volejbola laukumā.</p>
+                  </div>
+              </div>
+             
+              <div class="hero-slide" style="background-image: url('kubls.jpg');">
+                  <div class="hero-content">
+                      <h1>Karstā baļļa-kubls</h1>
+                      <p>Upesrūķu pirts teritorijā blakus pirts ēkai un netālu no blakus tekošās Tumšupes iespējams izbaudīt ūdens priekus karstajā baļļā (+35 līdz +37 C). Baļļā var sēdēt līdz 6 cilvēkiem. Tur ir omulīgi gan pārīšiem romantiskajā vakarā, gan mazai ģimenei vai lielākai draugu kompānijai. Baļļa ir relaksējoša, kad ir karsta.</p>
+                  </div>
+              </div>
+              
+                                                                     <div class="hero-slide" style="background-image: url('zoo v2.jpg');">
+                  <div class="hero-content">
+                      <h1>Mini Zoo</h1>
+                      <p>Lielas un mazas vistiņas, raibas un ar cekuliem dzīvo "Putnu mājā". Tās pastaigājas nožogotā terasē. Dēj olas. Labsirdīgs gailītis. Draudzīgas zosis ar skaļām balsīm. Putnus drīkst barot ar graudiem, sēklām, baltmaizi.</p>
+                  </div>
+              </div>
+         </div>
+         
+         <!-- Hero Navigation Dots -->
+         <div class="hero-nav">
+             <div class="hero-dot active" onclick="goToSlide(0)"></div>
+             <div class="hero-dot" onclick="goToSlide(1)"></div>
+             <div class="hero-dot" onclick="goToSlide(2)"></div>
+         </div>
+         
+         <!-- Hero Navigation Arrows -->
+         <button class="hero-arrow hero-prev" onclick="changeSlide(-1)">&#10094;</button>
+         <button class="hero-arrow hero-next" onclick="changeSlide(1)">&#10095;</button>
+     </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Section 1: Pirts ABC ar pirts kolektīvajām procedūrām -->
+        <section class="two-column-section">
+            <div class="content-column">
+                <h2 class="section-title-large">PIRTS ABC AR PIRTS KOLEKTĪVAJĀM PROCEDŪRĀM</h2>
+                <p style="font-size: 0.9rem; color: #7b5e3c; margin-top: -1rem; margin-bottom: 1.5rem; font-weight: 500;">(5-10 Personām)</p>
+                                 <p class="section-description">
+                     Iegremdējieties dziļā atpūtā un dabas spēkā! Mūsu piedāvājumā iekļauta aizraujoša pirts rituāla programma, sākot ar pirtsslotu griešanu mežā un ārstniecisko tēju vākšanu pļavās. Pēc dabas veltu ievākšanas sekos praktiskās nodarbības un lekcija, kurā iemācīsities sasiet sagrieztās slotiņas un uzzināsiet, kā savāktos ārstnieciskos augus izmantot pirts procedūrās. Rituāla karsēšanās pirtī prasmīga pirtnieka pavadībā, kas pāraugs veldzējošā pašpērienā ar pašu rokām sasietajām slotiņām. Lai atjaunotu spēkus, baudīsiet sviedrējošas, nomierinošas un vitaminizētas tējas ar medu, tējas sēnes dzērienu un veselīgas sezonālas uzkodas.
+                 </p>
+            </div>
+            <div class="image-column">
+                <img src="pirtsbildes.jpg" alt="Pirts ABC ar pirts kolektīvajām procedūrām" loading="lazy">
+            </div>
+        </section>
+
+        <!-- Section 2: Dabas SPA Rituāls un Pirts Procedūras Atjaunošanai -->
+        <section class="two-column-section">
+            <div class="content-column">
+                <h2 class="section-title-large">DABAS SPA RITUĀLS UN PIRTS PROCEDŪRAS ATJAUNOŠANAI</h2>
+                <p style="font-size: 0.9rem; color: #7b5e3c; margin-top: -1rem; margin-bottom: 1.5rem; font-weight: 500;">(2-8 Personām)</p>
+                                 <p class="section-description">
+                     Piedāvājumā iekļauta pirtsslotu griešana un tēju vākšana. Praktiskās nodarbībās iemācīsieties sasiet slotiņas un izmantot augus procedūrās. Seko karsēšanās pirtī pirtnieka pavadībā ar pērienu, izmantojot dažādas slotiņas (bērzs, ozols, kadiķis u.c.), kā arī pašpēriens. Kontrastam pieejams relaksējošs kubuls. Pēc rituāla baudiet veselīgas tējas ar medu, tējas sēnes dzērienu un sezonālas uzkodas.
+                 </p>
+            </div>
+            <div class="image-column">
+                <img src="pirtsbildes.jpg" alt="Dabas SPA Rituāls un Pirts Procedūras Atjaunošanai" loading="lazy">
+            </div>
+        </section>
+
+        <!-- Section 3: Individuāls Pirts Rituāls ar Speciālistiem -->
+        <section class="two-column-section">
+            <div class="content-column">
+                <h2 class="section-title-large">INDIVIDUĀLS PIRTS RITUĀLS AR SPECIĀLISTIEM</h2>
+                <p style="font-size: 0.9rem; color: #7b5e3c; margin-top: -1rem; margin-bottom: 1.5rem; font-weight: 500;">(2. Personām)</p>
+                                 <p class="section-description">
+                     Pakalpojumā ietilpst veselības stāvokļa noskaidrošana, seko karsēšanās, skrubis un divi pirts pērieni (uzsildes un pamatpēriens) ar slotiņām (bērzs, ozols, kadiķis, liepa u.c.). Pēc rituāla – kubuls ar silto ūdeni "bezsvara stāvokļa" peldei. Baudīsiet veselīgas tējas ar medu, tējas sēni un sezonālām uzkodām. Rituālam tiek izmantotas mūsu apkārtnes mežos sietās slotiņas un lasītās zāļu tējas.
+                 </p>
+            </div>
+            <div class="image-column">
+                <img src="pirtsbildes.jpg" alt="Individuāls Pirts Rituāls ar Speciālistiem" loading="lazy">
+            </div>
+                </section>
+
+        <!-- Traditions Section -->
+        <section class="traditions-section">
+            <div class="traditions-title-wrapper">
+                <h2 class="traditions-title">Pirts tradīcijas</h2>
+            </div>
+            <div class="traditions-grid">
+                <div class="tradition-card">
+                    <img src="laikarata.jpg" alt="Laika Rata pietura" class="tradition-card-image" data-gallery="laika-rata" onclick="openGallery('laika-rata')">
+                    <h4>Laika Rata pietura</h4>
+                    <p>Pirts festivāls pirtsmīļiem un visiem cilvēkiem tuvumā un tālumā, kuriem interesē pirtslietas un lekcijas par veselību. Parasti festivāls notiek augusta pirmajā nedēļā Bārbeles pusē - "Evertu" saimniecībā.</p>
+                </div>
+                <div class="tradition-card">
+                    <img src="pirts.jpg" alt="Pirts un garšu festivāls" class="tradition-card-image" data-gallery="pirts-garsu" onclick="openGallery('pirts-garsu')">
+                    <h4>Pirts un garšu festivāls</h4>
+                    <p>Lekcijas un radošās darbnīcas ikvienam, pirtnieku meistarklases "Stikla" pirtiņā, ikgadējais konkurss jaunajiem pirtniekiem, latviskas nodarbes bērniem un Senā uguns nakts kopā ar folkloras kopu.</p>
+                </div>
+                <div class="tradition-card">
+                    <img src="lvps.jpg" alt="Latvijas Pirts un zāļu festivāls" class="tradition-card-image" data-gallery="lvps" onclick="openGallery('lvps')">
+                    <h4>Latvijas Pirts un zāļu festivāls</h4>
+                    <p>Festivāls pulcina vairākus simtus pirtsmīļu uz divām karstām dienām Luknas ezera krastā! Apmeklētāji klausās izglītojošas lekcijas un piedalās radošajās darbnīcās. Ari dodot iespēju iepazīties ar pirts pakalpojumiem un pēc pēriena veldzēties siltajā ezerā.</p>
+                </div>
+                <div class="tradition-card">
+                    <img src="pirtins.jpg" alt="Pirtsslotu Siešana" class="tradition-card-image" data-gallery="pirtsslotu" onclick="openGallery('pirtsslotu')">
+                    <h4>Pirtsslotu Siešana</h4>
+                    <p>Lai nodrošinātu vislabākās pirtsslotas visai vasaras sezonai un turpmākajam gadam, mēs tepat upesrūķos tās sienam īpašā laikā – nedēļu pēc Jāņiem, kad augi ir pilni ar spēku un aromātu.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Gallery -->
+        <div id="lightbox" class="lightbox">
+            <span class="lightbox-close" onclick="closeGallery()">&times;</span>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</button>
+            <div class="lightbox-content">
+                <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            </div>
+            <div id="lightbox-thumbnails" class="lightbox-thumbnails"></div>
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Galvenās lapas</h3>
+                <ul>
+                    <li><a href="under-construction.html">Pakalpojumi</a></li>
+                    <li><a href="under-construction.html">Atsauksmes</a></li>
+                    <li><a href="under-construction.html">Kontakti</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Informācija</h3>
+                <ul>
+                    <li><a href="under-construction.html">Kontakti</a></li>
+                    <li><a href="tel:+37129476717">Uzzināt cenu</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontaktinformācija</h3>
+                <ul>
+                    <li><a href="mailto:upesruki@inbox.lv">upesruki@inbox.lv</a></li>
+                    <li><a href="tel:+37129476717">+371 29476717</a></li>
+                    <li>2. līnija 9, Skuķīši, Garkalnes pagasts, LV-2137</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Viesu nams "Upesrūķi". Visas tiesības aizsargātas</p>
+            <p class="design-credit">Mājas lapu Izstrādāja <span class="company-name">SIA A&J Marketing group</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        });
+
+                 // Hero Slider Functionality
+         let currentSlide = 0;
+         const slides = document.querySelectorAll('.hero-slide');
+         const dots = document.querySelectorAll('.hero-dot');
+         const slider = document.getElementById('hero-slider');
+         let slideInterval;
+         
+         // Initialize hero slider
+         function initHeroSlider() {
+             updateSlider();
+             startAutoSlide();
+             
+             // Add touch/swipe support
+             let startX = 0;
+             let endX = 0;
+             
+             slider.addEventListener('touchstart', function(e) {
+                 startX = e.touches[0].clientX;
+                 clearInterval(slideInterval);
+             });
+             
+             slider.addEventListener('touchend', function(e) {
+                 endX = e.changedTouches[0].clientX;
+                 handleSwipe();
+                 startAutoSlide();
+             });
+             
+             function handleSwipe() {
+                 const swipeThreshold = 50;
+                 const diff = startX - endX;
+                 
+                 if (Math.abs(diff) > swipeThreshold) {
+                     if (diff > 0) {
+                         // Swipe left - next slide
+                         changeSlide(1);
+                     } else {
+                         // Swipe right - previous slide
+                         changeSlide(-1);
+                     }
+                 }
+             }
+         }
+         
+         // Update slider position and content
+         function updateSlider() {
+             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+             
+             // Update dots
+             dots.forEach((dot, index) => {
+                 dot.classList.toggle('active', index === currentSlide);
+             });
+             
+             // Update content animations
+             const contents = document.querySelectorAll('.hero-content');
+             contents.forEach((content, index) => {
+                 content.classList.toggle('active', index === currentSlide);
+             });
+         }
+         
+         // Change slide
+         function changeSlide(direction) {
+             currentSlide = (currentSlide + direction + slides.length) % slides.length;
+             updateSlider();
+         }
+         
+         // Go to specific slide
+         function goToSlide(index) {
+             currentSlide = index;
+             updateSlider();
+             startAutoSlide(); // Reset auto-slide timer
+         }
+         
+         // Start auto-slide
+         function startAutoSlide() {
+             clearInterval(slideInterval);
+             slideInterval = setInterval(() => {
+                 changeSlide(1);
+             }, 5000); // Change slide every 5 seconds
+         }
+         
+         // Pause auto-slide on hover
+         slider.addEventListener('mouseenter', () => {
+             clearInterval(slideInterval);
+         });
+         
+         slider.addEventListener('mouseleave', () => {
+             startAutoSlide();
+         });
+         
+         // Initialize when DOM is loaded
+         document.addEventListener('DOMContentLoaded', function() {
+             initHeroSlider();
+         });
+
+         // Gallery functionality
+         const galleryImages = {
+             'laika-rata': [
+                 'Laika rata pietura/unnamed.jpg',
+                 'Laika rata pietura/unnamed (1).jpg',
+                 'Laika rata pietura/unnamed (2).jpg',
+                 'Laika rata pietura/unnamed (3).jpg'
+             ],
+             'pirts-garsu': [
+                 'pirts.jpg',
+                 'Pirts un garšu festivāls/unnamed.jpg',
+                 'Pirts un garšu festivāls/unnamed (4).jpg'
+             ],
+             'lvps': [
+                 'lvps.jpg'
+             ],
+             'pirtsslotu': [
+                 'pirtins.jpg'
+             ]
+         };
+
+         let currentGallery = '';
+         let currentImageIndex = 0;
+         let currentImages = [];
+
+         function openGallery(galleryName) {
+             currentGallery = galleryName;
+             currentImages = galleryImages[galleryName] || [];
+             currentImageIndex = 0;
+
+             if (currentImages.length === 0) {
+                 alert('Nav pieejamas bildes šai galerijai.');
+                 return;
+             }
+
+             const lightbox = document.getElementById('lightbox');
+             lightbox.classList.add('active');
+             document.body.style.overflow = 'hidden';
+
+             updateLightboxImage();
+             updateThumbnails();
+             updateCounter();
+
+             // Add keyboard event listeners
+             document.addEventListener('keydown', handleKeyboardNavigation);
+         }
+
+         function closeGallery() {
+             const lightbox = document.getElementById('lightbox');
+             lightbox.classList.remove('active');
+             document.body.style.overflow = '';
+             document.removeEventListener('keydown', handleKeyboardNavigation);
+         }
+
+         function changeImage(direction) {
+             if (currentImages.length === 0) return;
+
+             currentImageIndex += direction;
+             if (currentImageIndex < 0) {
+                 currentImageIndex = currentImages.length - 1;
+             } else if (currentImageIndex >= currentImages.length) {
+                 currentImageIndex = 0;
+             }
+
+             updateLightboxImage();
+             updateThumbnails();
+             updateCounter();
+         }
+
+         function goToImage(index) {
+             currentImageIndex = index;
+             updateLightboxImage();
+             updateThumbnails();
+             updateCounter();
+         }
+
+         function updateLightboxImage() {
+             const lightboxImage = document.getElementById('lightbox-image');
+             if (currentImages[currentImageIndex]) {
+                 lightboxImage.src = currentImages[currentImageIndex];
+                 lightboxImage.alt = `Image ${currentImageIndex + 1} of ${currentImages.length}`;
+             }
+         }
+
+         function updateThumbnails() {
+             const thumbnailsContainer = document.getElementById('lightbox-thumbnails');
+             thumbnailsContainer.innerHTML = '';
+
+             if (currentImages.length <= 1) {
+                 thumbnailsContainer.style.display = 'none';
+                 return;
+             }
+
+             thumbnailsContainer.style.display = 'flex';
+
+             currentImages.forEach((image, index) => {
+                 const thumbnail = document.createElement('img');
+                 thumbnail.src = image;
+                 thumbnail.className = 'lightbox-thumbnail';
+                 if (index === currentImageIndex) {
+                     thumbnail.classList.add('active');
+                 }
+                 thumbnail.onclick = () => goToImage(index);
+                 thumbnailsContainer.appendChild(thumbnail);
+             });
+         }
+
+         function updateCounter() {
+             const counter = document.getElementById('lightbox-counter');
+             if (currentImages.length > 1) {
+                 counter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+                 counter.style.display = 'block';
+             } else {
+                 counter.style.display = 'none';
+             }
+         }
+
+         function handleKeyboardNavigation(e) {
+             if (e.key === 'Escape') {
+                 closeGallery();
+             } else if (e.key === 'ArrowLeft') {
+                 changeImage(-1);
+             } else if (e.key === 'ArrowRight') {
+                 changeImage(1);
+             }
+         }
+
+         // Close lightbox when clicking on the background
+         document.getElementById('lightbox').addEventListener('click', function(e) {
+             if (e.target === this) {
+                 closeGallery();
+             }
+         });
+    </script>
+</body>
+</html>
+
